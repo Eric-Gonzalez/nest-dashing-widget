@@ -8,7 +8,7 @@ use_metric_system = false
 SCHEDULER.every '1m', :first_in => 0 do |job|
 	nest = NestThermostat::Nest.new({email: nest_user,password: nest_password})
 	first_nest = nest.status["shared"][nest.device_id]
-	temp = nest.temperature.to_i; 
+	temp = nest.current_temp.to_i; 
 	if (use_metric_system)
 		temp = f_to_c(temp)
 	end
